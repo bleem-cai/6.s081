@@ -4,7 +4,7 @@
 
 [lab2 syscall](https://github.com/bleem-cai/6.s081/tree/syscall)
 
-[lab3 pgtbl](https://github.com/bleem-cai/6.s081_2020/tree/pgtbl) (there is something wrong so don't get full scores)
+[lab3 pgtbl](https://github.com/bleem-cai/6.s081_2020/tree/pgtbl)
 
 [lab4 traps]()
 
