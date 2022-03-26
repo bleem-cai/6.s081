@@ -2,58 +2,51 @@
 #include "kernel/stat.h"
 #include "user/user.h"
 
-void prime(int p[2])
+void prime(int pp)
 {
-    char nums[35];
-    int val = 0;
-    read(p[0], nums, 35);
-    for (int i = 2; i < 35; i++)
+    int num;
+    if (read(pp, (char *)(&num), 1) != 0)
     {
-        if (nums[i] == 1)
+        printf("prime %d\n", num);
+        int p[2];
+        pipe(p);
+        if (fork() == 0)
         {
-            val = i;
-            nums[i] = 0;
-            break;
+            close(p[1]);
+            prime(p[0]);
+        }
+        else
+        {
+            int temp;
+            while (read(pp, (char *)(&temp), 1) != 0)
+                if (temp % num != 0)
+                    write(p[1], (char *)&temp, 1);
+            close(p[1]);
+            close(p[0]);
+            close(pp);
+            wait(0);
         }
     }
-    if (val == 0)
-        exit(0);
-    printf("prime %d\n", val);
-    for (int i = 2; i < 35; i++)
-    {
-        if (i % val == 0)
-            nums[i] = 0;
-    }
-    int pid = fork();
-    if (pid > 0)
-    {
-        write(p[1], nums, 35);
-        wait(0);
-    }
-    else if (pid == 0)
-    {
-        prime(p);
-    }
+    else
+        close(pp);
 }
 int main(int argc, char *argv[])
 {
     int p[2];
     pipe(p);
-    char nums[35];
-    for (int i = 2; i < 35; i++)
+    if (fork() == 0)
     {
-        nums[i] = 1;
+        close(p[1]);
+        prime(p[0]);
     }
-    printf("%s", nums);
-    int pid = fork();
-    if (pid == 0)
+    else
     {
-        prime(p);
-        wait(0);
-    }
-    else if (pid > 0)
-    {
-        write(p[1], nums, 35);
+        for (int i = 2; i < 36; i++)
+        {
+            write(p[1], (char *)(&i), 1);
+        }
+        close(p[1]);
+        close(p[0]);
         wait(0);
     }
     exit(0);
