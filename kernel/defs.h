@@ -20,7 +20,6 @@ void brelse(struct buf *);
 void bwrite(struct buf *);
 void bpin(struct buf *);
 void bunpin(struct buf *);
-void vmprint(pagetable_t pagetable);
 
 // console.c
 void consoleinit(void);
@@ -93,6 +92,7 @@ int fork(void);
 int growproc(int);
 pagetable_t proc_pagetable(struct proc *);
 void proc_freepagetable(pagetable_t, uint64);
+void proc_freekpt(pagetable_t);
 int kill(int);
 struct cpu *mycpu(void);
 struct cpu *getmycpu(void);
@@ -160,35 +160,31 @@ int uartgetc(void);
 
 // vm.c
 void kvminit(void);
+pagetable_t proc_kpt_init();
 void kvminithart(void);
 uint64 kvmpa(uint64);
 void kvmmap(uint64, uint64, uint64, int);
+void uvmmap(pagetable_t, uint64, uint64, uint64, int);
 int mappages(pagetable_t, uint64, uint64, uint64, int);
 pagetable_t uvmcreate(void);
 void uvminit(pagetable_t, uchar *, uint);
 uint64 uvmalloc(pagetable_t, uint64, uint64);
 uint64 uvmdealloc(pagetable_t, uint64, uint64);
-void vmprint(pagetable_t pagetable);
-pagetable_t kvmcreate(void);
-void kvmmapkern(pagetable_t, uint64, uint64, uint64, int);
-void kvmfree(pagetable_t, uint64);
-void kvmmapuser(int, pagetable_t, pagetable_t, uint64, uint64);
-
-// vmcopyin.c
-int copyin_new(pagetable_t, char *, uint64, uint64);
-int copyinstr_new(pagetable_t, char *, uint64, uint64);
-
-#ifdef SOL_COW
-#else
 int uvmcopy(pagetable_t, pagetable_t, uint64);
-#endif
+void u2kvmcopy(pagetable_t, pagetable_t, uint64, uint64);
 void uvmfree(pagetable_t, uint64);
 void uvmunmap(pagetable_t, uint64, uint64, int);
 void uvmclear(pagetable_t, uint64);
 uint64 walkaddr(pagetable_t, uint64);
+pte_t *walk(pagetable_t, uint64, int);
 int copyout(pagetable_t, uint64, char *, uint64);
 int copyin(pagetable_t, char *, uint64, uint64);
 int copyinstr(pagetable_t, char *, uint64, uint64);
+void vmprint(pagetable_t);
+
+// vmcopyin.c
+int copyin_new(pagetable_t, char *, uint64, uint64);
+int copyinstr_new(pagetable_t, char *, uint64, uint64);
 
 // plic.c
 void plicinit(void);
