@@ -1,0 +1,7 @@
+{
+    "makefile.extensionOutputFolder": "./.vscode",
+    "files.associations": {
+        "fs.h": "c",
+        "proc.h": "c"
+    }
+}
