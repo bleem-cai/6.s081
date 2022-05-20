@@ -6,9 +6,9 @@
 
 [lab3 pgtbl](https://github.com/bleem-cai/6.s081_2020/tree/pgtbl)
 
-[lab4 traps]()
+[lab4 traps](https://github.com/bleem-cai/6.s081_2020/tree/traps)
 
-[lab5 lazy]()
+[lab5 lazy](https://github.com/bleem-cai/6.s081_2020/tree/lazy)
 
 [lab6 cow]()
 
