@@ -10,7 +10,7 @@
 
 [lab5 lazy](https://github.com/bleem-cai/6.s081_2020/tree/lazy)
 
-[lab6 cow]()
+[lab6 cow](https://github.com/bleem-cai/6.s081_2020/tree/cow)
 
 [lab7 thread]()
 
