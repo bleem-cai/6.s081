@@ -14,7 +14,7 @@
 
 [lab7 thread](https://github.com/bleem-cai/6.s081_2020/tree/thread)
 
-[lab8 lock]()
+[lab8 lock](https://github.com/bleem-cai/6.s081_2020/tree/lock)
 
 [lab9 fs]()
 
