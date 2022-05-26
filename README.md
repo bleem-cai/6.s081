@@ -16,7 +16,7 @@
 
 [lab8 lock](https://github.com/bleem-cai/6.s081_2020/tree/lock)
 
-[lab9 fs]()
+[lab9 fs](https://github.com/bleem-cai/6.s081_2020/tree/fs)
 
 [lab10 mmap]()
 
