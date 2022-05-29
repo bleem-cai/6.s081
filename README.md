@@ -18,6 +18,6 @@
 
 [lab9 fs](https://github.com/bleem-cai/6.s081_2020/tree/fs)
 
-[lab10 mmap]()
+[lab10 mmap](https://github.com/bleem-cai/6.s081_2020/tree/mmap)
 
-[lab11 net]()
+[lab11 net](https://github.com/bleem-cai/6.s081_2020/tree/net)
