@@ -1,4 +1,4 @@
-# 6.s081(updating)
+# 6.s081(DONE)
 
 [lab1 util](https://github.com/bleem-cai/6.s081/tree/util)
 
